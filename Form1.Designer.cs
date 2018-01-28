@@ -28,185 +28,177 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.files = new System.Windows.Forms.CheckedListBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.textInputDir = new System.Windows.Forms.TextBox();
+            this.textOutputDir = new System.Windows.Forms.TextBox();
+            this.textOutput = new System.Windows.Forms.RichTextBox();
+            this.buttonSelInput = new System.Windows.Forms.Button();
+            this.buttonSelOutput = new System.Windows.Forms.Button();
+            this.buttonBuild = new System.Windows.Forms.Button();
+            this.checkedListFiles = new System.Windows.Forms.CheckedListBox();
+            this.buttonLoad = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.checkIsResursive = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textInputDir
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 32);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 26);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "F:\\test\\1";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textInputDir.Location = new System.Drawing.Point(19, 59);
+            this.textInputDir.Margin = new System.Windows.Forms.Padding(5);
+            this.textInputDir.Name = "textInputDir";
+            this.textInputDir.Size = new System.Drawing.Size(241, 39);
+            this.textInputDir.TabIndex = 0;
+            this.textInputDir.Text = "F:\\test\\1";
+            this.textInputDir.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // textOutputDir
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 73);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(198, 26);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "F:\\test";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textOutputDir.Location = new System.Drawing.Point(19, 115);
+            this.textOutputDir.Margin = new System.Windows.Forms.Padding(5);
+            this.textOutputDir.Name = "textOutputDir";
+            this.textOutputDir.Size = new System.Drawing.Size(241, 39);
+            this.textOutputDir.TabIndex = 1;
+            this.textOutputDir.Text = "F:\\test";
             // 
-            // richTextBox1
+            // textOutput
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(13, 274);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(347, 258);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.textOutput.Location = new System.Drawing.Point(22, 284);
+            this.textOutput.Margin = new System.Windows.Forms.Padding(5);
+            this.textOutput.Name = "textOutput";
+            this.textOutput.Size = new System.Drawing.Size(425, 459);
+            this.textOutput.TabIndex = 2;
+            this.textOutput.Text = "";
             // 
-            // button1
+            // buttonSelInput
             // 
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(238, 32);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 28);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Source Directory";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSelInput.AutoSize = true;
+            this.buttonSelInput.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonSelInput.Location = new System.Drawing.Point(278, 59);
+            this.buttonSelInput.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonSelInput.Name = "buttonSelInput";
+            this.buttonSelInput.Size = new System.Drawing.Size(170, 44);
+            this.buttonSelInput.TabIndex = 3;
+            this.buttonSelInput.Text = "选择输入目录";
+            this.buttonSelInput.UseVisualStyleBackColor = true;
+            this.buttonSelInput.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // buttonSelOutput
             // 
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(238, 69);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 31);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Output Directory";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonSelOutput.AutoSize = true;
+            this.buttonSelOutput.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonSelOutput.Location = new System.Drawing.Point(278, 115);
+            this.buttonSelOutput.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonSelOutput.Name = "buttonSelOutput";
+            this.buttonSelOutput.Size = new System.Drawing.Size(170, 44);
+            this.buttonSelOutput.TabIndex = 4;
+            this.buttonSelOutput.Text = "选择输出目录";
+            this.buttonSelOutput.UseVisualStyleBackColor = true;
+            this.buttonSelOutput.Click += new System.EventHandler(this.button2_Click);
             // 
-            // checkBox1
+            // buttonBuild
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(16, 9);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(235, 20);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Only top-level directories";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.buttonBuild.Location = new System.Drawing.Point(278, 196);
+            this.buttonBuild.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonBuild.Name = "buttonBuild";
+            this.buttonBuild.Size = new System.Drawing.Size(142, 44);
+            this.buttonBuild.TabIndex = 6;
+            this.buttonBuild.Text = "生成";
+            this.buttonBuild.UseVisualStyleBackColor = true;
+            this.buttonBuild.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button3
+            // checkedListFiles
             // 
-            this.button3.Location = new System.Drawing.Point(238, 188);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(122, 34);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Build";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.checkedListFiles.FormattingEnabled = true;
+            this.checkedListFiles.Location = new System.Drawing.Point(503, 21);
+            this.checkedListFiles.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkedListFiles.Name = "checkedListFiles";
+            this.checkedListFiles.Size = new System.Drawing.Size(516, 616);
+            this.checkedListFiles.TabIndex = 7;
             // 
-            // files
+            // buttonLoad
             // 
-            this.files.FormattingEnabled = true;
-            this.files.Location = new System.Drawing.Point(431, 16);
-            this.files.Name = "files";
-            this.files.Size = new System.Drawing.Size(443, 487);
-            this.files.TabIndex = 7;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(238, 126);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(122, 34);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Load";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 126);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 16);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Output Code Template :";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(13, 539);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(347, 14);
-            this.progressBar1.TabIndex = 12;
+            this.buttonLoad.Location = new System.Drawing.Point(44, 196);
+            this.buttonLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(142, 44);
+            this.buttonLoad.TabIndex = 10;
+            this.buttonLoad.Text = "加载";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(431, 529);
+            this.button5.AutoSize = true;
+            this.button5.Location = new System.Drawing.Point(503, 699);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(102, 23);
+            this.button5.Size = new System.Drawing.Size(136, 44);
             this.button5.TabIndex = 13;
-            this.button5.Text = "Select All";
+            this.button5.Text = "全选";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(551, 529);
+            this.button6.AutoSize = true;
+            this.button6.Location = new System.Drawing.Point(693, 699);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(117, 23);
+            this.button6.Size = new System.Drawing.Size(136, 44);
             this.button6.TabIndex = 14;
-            this.button6.Text = "Deselect All";
+            this.button6.Text = "取消全选";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // comboBox1
+            // button7
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 155);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(202, 24);
-            this.comboBox1.TabIndex = 15;
+            this.button7.AutoSize = true;
+            this.button7.Location = new System.Drawing.Point(883, 699);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(136, 44);
+            this.button7.TabIndex = 14;
+            this.button7.Text = "反选";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // checkIsResursive
+            // 
+            this.checkIsResursive.AutoSize = true;
+            this.checkIsResursive.Location = new System.Drawing.Point(19, 14);
+            this.checkIsResursive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkIsResursive.Name = "checkIsResursive";
+            this.checkIsResursive.Size = new System.Drawing.Size(232, 35);
+            this.checkIsResursive.TabIndex = 15;
+            this.checkIsResursive.Text = "是否选择递归目录";
+            this.checkIsResursive.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(886, 565);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(1036, 832);
+            this.Controls.Add(this.checkIsResursive);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.files);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Controls.Add(this.buttonLoad);
+            this.Controls.Add(this.checkedListFiles);
+            this.Controls.Add(this.buttonBuild);
+            this.Controls.Add(this.buttonSelOutput);
+            this.Controls.Add(this.buttonSelInput);
+            this.Controls.Add(this.textOutput);
+            this.Controls.Add(this.textOutputDir);
+            this.Controls.Add(this.textInputDir);
+            this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(5);
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Mx Excel Tool";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "表格生成工具";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,20 +206,18 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.CheckedListBox files;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.TextBox textInputDir;
+        private System.Windows.Forms.TextBox textOutputDir;
+        private System.Windows.Forms.RichTextBox textOutput;
+        private System.Windows.Forms.Button buttonSelInput;
+        private System.Windows.Forms.Button buttonSelOutput;
+        private System.Windows.Forms.Button buttonBuild;
+        private System.Windows.Forms.CheckedListBox checkedListFiles;
+        private System.Windows.Forms.Button buttonLoad;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.CheckBox checkIsResursive;
     }
 }
 

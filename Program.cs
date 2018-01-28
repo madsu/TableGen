@@ -1,5 +1,4 @@
-﻿using FastExcel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,10 +9,6 @@ namespace MxExcelTool
 {
     static class Program
     {
-        static public string FilesPath = @"F:\test\1";
-        static public string OutsPath = @"F:\test";
-        static public bool IsFindChild = true;
-
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -28,32 +23,29 @@ namespace MxExcelTool
 
         static public void Log(string str)
         {
-            if (mform == null) return;
             mform.Log(str);
         }
 
+        //static public void  OnExcute()
+        //{
+        //    if (string.IsNullOrEmpty(FilesPath))
+        //    {
+        //        Log("没有选择源数据路径");
+        //        return;
+        //    }
 
-        static public void  OnExcute()
-        {
-            if (string.IsNullOrEmpty(FilesPath))
-            {
-                Log("没有选择源数据路径");
-                return;
-            }
+        //    var files =Directory.GetFiles(FilesPath, "*.*", IsFindChild ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly)
+        //        .Where(s => s.EndsWith(".xls") || s.EndsWith(".xlsx"));
 
-            var files =Directory.GetFiles(FilesPath, "*.*", IsFindChild ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly)
-                .Where(s => s.EndsWith(".xls") || s.EndsWith(".xlsx"));
+        //    List<Worksheet> sheets = new List<Worksheet>();
+        //    foreach (var item in files)
+        //    {
+        //        List<Worksheet> sheet = MxExcel.FastExcelRead(new FileInfo(item),2);
+        //        sheets.AddRange(sheet);
+        //    }
 
-            List<Worksheet> sheets = new List<Worksheet>();
-            foreach (var item in files)
-            {
-                List<Worksheet> sheet = MxExcel.FastExcelRead(new FileInfo(item),2);
-                sheets.AddRange(sheet);
-            }
-
-            Log(string.Format("sheets count = {0}", sheets.Count));
-        }
-
+        //    Log(string.Format("sheets count = {0}", sheets.Count));
+        //}
 
         static Form1 mform;
     }

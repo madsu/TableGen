@@ -29,15 +29,14 @@ namespace MxExcelTool
             Log(string.Format("Writing IEnumerable<MyObject> took {0} seconds", stopwatch.Elapsed.TotalSeconds));
         }
 
-        static public List<Worksheet> FastExcelRead(FileInfo inputFile , List<string> sheetNames  , bool readOnly = true )
+        static public List<Worksheet> FastExcelRead(FileInfo inputFile ,bool readOnly = true )
         {
             List<Worksheet> sheets = new List<Worksheet>();
             Stopwatch stopwatch = Stopwatch.StartNew();
 
-            // Open excel file using read only is much faster, but you cannot perfrom any writes
             using (FastExcel.FastExcel fastExcel = new FastExcel.FastExcel(inputFile, readOnly))
             {
-                for (int i = 1; i < sheetNames.Count; i++)
+                for (int i = 1; i < fastExcel.MaxSheetNumber; i++)
                 {
                     Worksheet worksheet = fastExcel.Read(sheetNames[i]);
                     if ( null == worksheet ) continue;
@@ -59,7 +58,7 @@ namespace MxExcelTool
             return sheets;
         }
 
-        static public List<Worksheet> FastExcelRead(FileInfo inputFile , int sheetCount , bool readOnly = true)
+        static public List<Worksheet> FastExcelRead(FileInfo inputFile , bool readOnly = true)
         {
             List<Worksheet> sheets = new List<Worksheet>();
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -87,12 +86,10 @@ namespace MxExcelTool
             return sheets;
         }
 
-
         static public void Log(string str)
         {
             Program.Log(str);
         }
-
 
         private class GenericObject
         {
