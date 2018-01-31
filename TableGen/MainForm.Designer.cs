@@ -158,6 +158,7 @@
             this.Controls.Add(this.OutputDir);
             this.Controls.Add(this.InputDir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "表格生成工具";
