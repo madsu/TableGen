@@ -64,25 +64,54 @@ namespace TableGen
             Program.Log("生成XML...");
             foreach (KeyValuePair<String, DataTable> kvp in sheets)
             {
-                XmlElement data = xmlDoc.CreateElement("data");
-                data.SetAttribute("Name", kvp.Key.ToString());
-                data.SetAttribute("Comment", "");
-                data.SetAttribute("Type", "Dictionary");
-                data.SetAttribute("ItemName", "root/content");
-                data.SetAttribute("DataPath", kvp.Key.ToString() + ".xml");
-                data.SetAttribute("CfgType", "DB");
-
-                string key1 = "";
-                string key2 = "";
                 DataTable sheet = kvp.Value;
+
+                //先检查此table是否为客户端使用
+                int clientUseCount = 0;
                 for (int i = 0; i < sheet.Rows.Count; i++)
                 {
                     DataRow row = sheet.Rows[i];
-                    String name = "";
-                    String type = "";
-                    String comment = "";
-                    bool isClientUse = false;
 
+                    //在这一行数据中查找客户端用字段
+                    bool isClientUse = false;
+                    foreach (DataColumn column in sheet.Columns)
+                    {
+                        string fieldName = column.ToString();
+                        if (fieldName != "客户端用")
+                            continue;
+
+                        object value = row[column];
+                        if (value.ToString() != "")
+                        {
+                            try
+                            {
+                                if (int.Parse(value.ToString()) == 1)
+                                    isClientUse = true;
+                            }
+                            catch (Exception ex)
+                            {
+                                Program.Log("当前文件名:" + kvp.Key.ToString());
+                                Program.Log(ex.ToString());
+                                return;
+                            }
+                        }
+
+                        if (isClientUse)
+                            clientUseCount++;
+                    }
+                }
+
+                if (clientUseCount <= 1)
+                    continue;
+
+                string key1 = ""; string key2 = "";
+                XmlElement data = xmlDoc.CreateElement("data");
+                for (int i = 0; i < sheet.Rows.Count; i++)
+                {
+                    DataRow row = sheet.Rows[i];
+
+                    bool isClientUse = false;
+                    String name = ""; String type = ""; String comment = "";
                     foreach (DataColumn column in sheet.Columns)
                     {
                         object value = row[column];
@@ -90,12 +119,29 @@ namespace TableGen
                         if (fieldName == "字段名")
                         {
                             name = value.ToString();
+                            if (name == "KeyName")
+                                key2 = name;
                         }
                         else if (fieldName == "数据类型")
                         {
-                            Match m = Regex.Match(value.ToString(), "char");
-                            if (m.Success)
+                            if (Regex.Match(value.ToString(), "char").Success)
                                 type = "string";
+                            else if (Regex.Match(value.ToString(), "UINT8").Success)
+                                type = "byte";
+                            else if (Regex.Match(value.ToString(), "UINT16").Success)
+                                type = "ushort";
+                            else if (Regex.Match(value.ToString(), "UINT32").Success)
+                                type = "uint";
+                            else if (Regex.Match(value.ToString(), "UINT64").Success)
+                                type = "ulong";
+                            else if (Regex.Match(value.ToString(), "INT8").Success)
+                                type = "char";
+                            else if (Regex.Match(value.ToString(), "INT16").Success)
+                                type = "short";
+                            else if (Regex.Match(value.ToString(), "INT32").Success)
+                                type = "int";
+                            else if (Regex.Match(value.ToString(), "INT64").Success)
+                                type = "long";
                             else
                                 type = value.ToString();
                         }
@@ -143,9 +189,19 @@ namespace TableGen
                     field.SetAttribute("Default", "");
                     field.SetAttribute("Comment", comment);
                     data.AppendChild(field);
-                    data.SetAttribute("KeyName", key1);
-                    data.SetAttribute("Key2Name", key2);
                 }
+                data.SetAttribute("Name", kvp.Key.ToString());
+                data.SetAttribute("Comment", "");
+                if (key2 != "")
+                    data.SetAttribute("Type", "DictionaryEx");
+                else
+                    data.SetAttribute("Type", "Dictionary");
+                data.SetAttribute("ItemName", "root/content");
+                data.SetAttribute("DataPath", kvp.Key.ToString() + ".xml");
+                data.SetAttribute("KeyName", key1);
+                if (key2 != "")
+                    data.SetAttribute("Key2Name", key2);
+                data.SetAttribute("CfgType", "DB");
                 xml.AppendChild(data);
             }
 
