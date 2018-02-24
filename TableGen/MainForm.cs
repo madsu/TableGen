@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.IO;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml;
 using System.Windows.Forms;
 
 namespace TableGen
@@ -19,13 +17,61 @@ namespace TableGen
         {
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
-            RefreshFileList(InputDir.Text);
         }
 
         public void Log(string str)
         {
             richTextBox1.Text += str;
             richTextBox1.Text += "\n";
+        }
+
+        private void LoadConfig()
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            try
+            {
+                xmlDoc.Load(@".\config.xml");
+                XmlNode inputDir = xmlDoc.SelectSingleNode("//InputDir");
+                if(inputDir != null)
+                {
+                    InputDir.Text = inputDir.InnerText;
+                }
+
+                XmlNode outputDir = xmlDoc.SelectSingleNode("//OutputDir");
+                if(outputDir != null)
+                {
+                    OutputDir.Text = outputDir.InnerText;
+                }
+           
+            }
+            catch (Exception e)
+            {
+                Log(e.Message);
+            }
+        }
+
+        private void SaveConfig()
+        {
+            //生成XML
+            //创建XmlDocument对象
+            XmlDocument xmlDoc = new XmlDocument();
+            //XML的声明<?xml version="1.0" encoding="gb2312"?> 
+            XmlDeclaration xmlSM = xmlDoc.CreateXmlDeclaration("1.0", "UTF-8", null);
+            //追加xmldecl位置
+            xmlDoc.AppendChild(xmlSM);
+            //添加一个名为Gen的根节点
+            XmlElement xml = xmlDoc.CreateElement("", "root", "");
+            //追加Gen的根节点位置
+            xmlDoc.AppendChild(xml);
+
+            XmlElement inputDir = xmlDoc.CreateElement("InputDir");
+            inputDir.InnerText = InputDir.Text;
+            XmlElement outputDir = xmlDoc.CreateElement("OutputDir");
+            outputDir.InnerText = OutputDir.Text;
+
+            xml.AppendChild(inputDir);
+            xml.AppendChild(outputDir);
+            xmlDoc.Save(@".\config.xml");
         }
 
         private void SelInputDir_Click(object sender, EventArgs e)
@@ -155,6 +201,19 @@ namespace TableGen
         {
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            LoadConfig();
+            RefreshFileList(InputDir.Text);
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SaveConfig();
+            Dispose();
+            Application.Exit();
         }
     }
 }

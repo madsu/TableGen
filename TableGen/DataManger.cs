@@ -119,8 +119,6 @@ namespace TableGen
                         if (fieldName == "字段名")
                         {
                             name = value.ToString();
-                            if (name == "KeyName")
-                                key2 = name;
                         }
                         else if (fieldName == "数据类型")
                         {
